@@ -1,13 +1,17 @@
 #include "lista_estatica.c"
 
+Lista* preencherItensLista(Lista *l)
+{
+    for (int i = 0; i < TAM_MAX; i++)
+      insere(l,rand() % 10);    
+}
+
 int main()
 {
     Lista* lista  =  cria_lista_vazia();
 
-    insere(lista,6);
-    insere(lista,7);
-    insere(lista,4);
-
+    preencherItensLista(lista);
+    
     imprime2(lista);
 
     imprime(lista);
