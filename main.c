@@ -1,20 +1,36 @@
 #include "lista_estatica.c"
 
-Lista* preencherItensLista(Lista *l)
+void verificarItemLista(Lista *l, TipoItem x)
 {
-    for (int i = 0; i < TAM_MAX; i++)
-      insere(l,rand() % 10);    
+     TipoItem ti = busca(l, x);
+
+    if(ti==-1)
+        printf("ITEM %d NÃO ENCONTRADO \n",x);
+    else
+        printf("ITEM %d encontrado \n",x);
+    
 }
 
 int main()
 {
-    Lista* lista  =  cria_lista_vazia();
+    Lista *lista = cria_lista_vazia();
 
-    preencherItensLista(lista);
-    
+    insere(lista, 2);
+    insere(lista, 45);
+    insere(lista, 10);
+    insere(lista, 1);
+    insere(lista, 11);
+    insere(lista, 110);
+    insere(lista,4);
+    insere(lista, 8);
+ 
     imprime2(lista);
 
-    imprime(lista);
+    verificarItemLista(lista, 22);
+    verificarItemLista(lista, 8);
+    verificarItemLista(lista, 1);
+    verificarItemLista(lista, 33);
+    verificarItemLista(lista, 110);
 
     return 0;
 }

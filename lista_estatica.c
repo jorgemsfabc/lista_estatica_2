@@ -61,41 +61,35 @@ void imprime2(Lista *l)
     }
 }
 
-void insere(Lista *l, TipoItem tipoItem)
+void insere(Lista *l, TipoItem x)
 {
-    if (vazia(l))
+    int pos = 0;
+
+    if (!vazia(l))
     {
-        l->ultimo++;
-        l->item[0] = tipoItem;
+
+        while (pos < l->ultimo && x > l->item[pos])
+            pos++;
+
+        for (int i = l->ultimo; i >= pos; i--)
+            l->item[i] = l->item[i - 1];
     }
-    else
+
+    l->item[pos] = x;
+    l->ultimo++;
+    l->pos++;
+}
+
+TipoItem busca(Lista *l, TipoItem x)
+{
+    TipoItem item;
+    l->pos = -1;
+
+    do
     {
-        int posInsercao,aux;
+        item = proximo(l);
+     
+    } while (item != x && item!=-1);
 
-        for (int i = l->primeiro; i <= l->ultimo; i++)
-        {
-            if (l->item[i] > tipoItem || l->ultimo==i )
-            {
-               posInsercao = i;
-               l->pos = posInsercao;
-               l->pos++;             
-               break;
-            }
-            
-        }
-
-  
-      
-        while(l->pos < l->ultimo)
-        {
-            aux  = l->item[l->pos];
-            l->item[l->pos] = l->item[l->pos-1]; 
-            l->pos++; 
-            l->item[l->pos] = aux;  
-        }
-        
-        l->item[posInsercao] = tipoItem;
-
-        l->ultimo++;
-    }
+    return item;
 }

@@ -31,5 +31,7 @@ void imprime2(Lista *l);
 //Insere um item na lista estática na ordem
 void insere(Lista* l, TipoItem x);
 
+//busca um item na lista estática na ordem
+TipoItem busca(Lista* l, TipoItem x);
 
 #endif
